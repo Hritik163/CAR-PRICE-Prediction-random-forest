@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car price prediction hritik burman 2003</title>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Helvetica', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #fc3925);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            background: #ffffffee;
+            margin: 50px auto;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        section {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #222;
+        }
+        select, input[type=text] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        select:focus, input[type=text]:focus {
+            border: 1px solid #6a11cb;
+            outline: none;
+        }
+        button {
+            background: #6a11cb;
+            color: #fff;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background: #2575fc;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #444;
+            font-size: 22px;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Car Price Prediction</h1>
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+
+            <!-- Car Name -->
+            <section>
+                <label for="Car_Name">Car Name</label>
+                <select name="Car_Name" id="Car_Name" required>
+                    <option value="" disabled selected>Select Car</option>
+                    <option value="0">800</option>
+                    <option value="1">Activa 3g</option>
+                    <option value="2">Activa 4g</option>
+                    <option value="3">Bajaj ct 100</option>
+                    <option value="4">Bajaj Avenger 150</option>
+                    <option value="5">Bajaj Avenger 150 street</option>
+                    <option value="6">Bajaj Avenger 220</option>
+                    <option value="7">Bajaj Avenger 220 dtsi</option>
+                    <option value="8">Bajaj Avenger Street 220</option>
+                    <option value="9">Bajaj Discover 100</option>
+                    <option value="10">Bajaj Discover 125</option>
+                    <option value="11">Bajaj Dominar 400</option>
+                    <option value="12">Bajaj Pulsar NS 200</option>
+                    <option value="13">Bajaj Pulsar 135 LS</option>
+                    <option value="14">Bajaj Pulsar 150</option>
+                    <option value="15">Bajaj Pulsar 220 F</option>
+                    <option value="16">Bajaj Pulsar RS200</option>
+                    <option value="17">Hero CBZ Xtreme</option>
+                    <option value="18">Hero Ignitor Disc</option>
+                    <option value="19">Hero Extreme</option>
+                    <option value="20">Hero Glamour</option>
+                    <option value="21">Hero Honda CBZ extreme</option>
+                    <option value="22">Hero Honda Passion Pro</option>
+                    <option value="23">Hero Hunk</option>
+                    <option value="24">Hero Passion Pro</option>
+                    <option value="25">Hero Passion X pro</option>
+                    <option value="26">Hero Splender Plus</option>
+                    <option value="27">Hero Splender iSmart</option>
+                    <option value="28">Hero Super Splendor</option>
+                    <option value="29">Honda Activa 125</option>
+                    <option value="30">Honda Activa 4G</option>
+                    <option value="31">Honda CB Hornet 160R</option>
+                    <option value="32">Honda CB Shine</option>
+                    <option value="33">Honda CB Trigger</option>
+                    <option value="34">Honda CB Unicorn</option>
+                    <option value="35">Honda CB twister</option>
+                    <option value="36">Honda CBR 150</option>
+                    <option value="37">Honda Dream Yuga</option>
+                    <option value="38">Honda Karizma</option>
+                    <option value="39">Hyosung GT250R</option>
+                    <option value="40">KTM 390 Duke</option>
+                    <option value="41">KTM RC200</option>
+                    <option value="42">KTM RC390</option>
+                    <option value="43">Mahindra Mojo XT300</option>
+                    <option value="44">Royal Enfield Bullet 350</option>
+                    <option value="45">Royal Enfield Classic 350</option>
+                    <option value="46">Royal Enfield Classic 500</option>
+                    <option value="47">Royal Enfield Thunder 350</option>
+                    <option value="48">Royal Enfield Thunder 500</option>
+                    <option value="49">Suzuki Access 125</option>
+                    <option value="50">TVS Apache RTR 160</option>
+                    <option value="51">TVS Apache RTR 180</option>
+                    <option value="52">TVS Jupyter</option>
+                    <option value="53">TVS Sport</option>
+                    <option value="54">TVS Wego</option>
+                    <option value="55">UM Renegade Mojave</option>
+                    <option value="56">Yamaha FZ v 2.0</option>
+                    <option value="57">Yamaha FZ 16</option>
+                    <option value="58">Yamaha FZ S</option>
+                    <option value="59">Yamaha FZ S V 2.0</option>
+                    <option value="60">Yamaha Fazer</option>
+                    <option value="61">alto 800</option>
+                    <option value="62">alto k10</option>
+                    <option value="63">amaze</option>
+                    <option value="64">baleno</option>
+                    <option value="65">brio</option>
+                    <option value="66">camry</option>
+                    <option value="67">ciaz</option>
+                    <option value="68">city</option>
+                    <option value="69">corolla</option>
+                    <option value="70">corolla altis</option>
+                    <option value="71">creta</option>
+                    <option value="72">dzire</option>
+                    <option value="73">elantra</option>
+                    <option value="74">eon</option>
+                    <option value="75">ertiga</option>
+                    <option value="76">etios cross</option>
+                    <option value="77">etios g</option>
+                    <option value="78">etios gd</option>
+                    <option value="79">etios liva</option>
+                    <option value="80">fortuner</option>
+                    <option value="81">grand i10</option>
+                    <option value="82">i10</option>
+                    <option value="83">i20</option>
+                    <option value="84">ignis</option>
+                    <option value="85">innova</option>
+                    <option value="86">jazz</option>
+                    <option value="87">land cruiser</option>
+                    <option value="88">omni</option>
+                    <option value="89">ritz</option>
+                    <option value="90">s cross</option>
+                    <option value="91">swift</option>
+                    <option value="92">sx4</option>
+                    <option value="93">verna</option>
+                    <option value="94">vitara brezza</option>
+                    <option value="95">wagon r</option>
+                    <option value="96">xcent</option>
+                </select>
+            </section>
+
+            <!-- Year -->
+            <section>
+                <label for="Year">Year</label>
+                <input type="text" name="Year" id="Year" placeholder="Year" required />
+            </section>
+
+            <!-- Present Price -->
+            <section>
+                <label for="Present_Price">Present Price (in Lakh)</label>
+                <input type="text" name="Present_Price" id="Present_Price" placeholder="Present Price" required />
+            </section>
+
+            <!-- Kms Driven -->
+            <section>
+                <label for="Kms_Driven">Kms Driven</label>
+                <input type="text" name="Kms_Driven" id="Kms_Driven" placeholder="Kms Driven" required />
+            </section>
+
+            <!-- Fuel Type -->
+            <section>
+                <label for="Fuel_Type">Fuel Type</label>
+                <select name="Fuel_Type" id="Fuel_Type" required>
+                    <option value="" disabled selected>Select Fuel</option>
+                    <option value="0">Petrol</option>
+                    <option value="1">Diesel</option>
+                    <option value="2">CNG</option>
+                </select>
+            </section>
+
+            <!-- Seller Type -->
+            <section>
+                <label for="Seller_Type">Seller Type</label>
+                <select name="Seller_Type" id="Seller_Type" required>
+                    <option value="" disabled selected>Select Seller</option>
+                    <option value="0">Individual</option>
+                    <option value="1">Dealer</option>
+                </select>
+            </section>
+
+            <!-- Transmission -->
+            <section>
+                <label for="Transmission">Transmission</label>
+                <select name="Transmission" id="Transmission" required>
+                    <option value="" disabled selected>Select Transmission</option>
+                    <option value="0">Manual</option>
+                    <option value="1">Automatic</option>
+                </select>
+            </section>
+
+            <!-- Owner -->
+            <section>
+                <label for="Owner">Owner Count</label>
+                <input type="text" name="Owner" id="Owner" placeholder="Owner Count" required />
+            </section>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+            <h2>Predicted Car Price: ₹ {{ result[0] }} Lakh</h2>
+        {% endif %}
+
+        <p>🚗 copyright @ HRITIK KUMAR 🚗</p>
+    </div>
+</body>
+</html>
